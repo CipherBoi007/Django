@@ -1,0 +1,116 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Styled Table</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .table-container {
+      margin-top: 30px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-container h2 {
+      margin-bottom: 16px;
+      color: #333;
+      font-size: 24px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 600px;
+      font-size: 16px;
+      background: #fdfdfd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .styled-table thead {
+      background-color: #4A90E2;
+      color: #ffffff;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 14px 18px;
+      text-align: left;
+    }
+
+    .styled-table tbody tr {
+      transition: background 0.3s ease;
+    }
+
+    .styled-table tbody tr:nth-child(even) {
+      background-color: #f4f7fb;
+    }
+
+    .styled-table tbody tr:hover {
+      background-color: #eaf3ff;
+    }
+
+    .styled-table td {
+      color: #333;
+    }
+
+    .styled-table th:first-child,
+    .styled-table td:first-child {
+      border-top-left-radius: 10px;
+    }
+
+    .styled-table th:last-child,
+    .styled-table td:last-child {
+      border-top-right-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table-container">
+    <h2>Submitted Messages</h2>
+    <div class="table-responsive">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Email}}</td>
+            <td>{{i.Message}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <br>
+   <center><a href="{% url 'home' %}" class="redirect-link">Go to home Page</a></center>
+  </div>
+
+</body>
+</html>
